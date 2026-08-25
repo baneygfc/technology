@@ -1,619 +1,1021 @@
-import { Phone, Mail, MapPin, Check, ChevronRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baney GFC - IT Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-// ============ SITE HEADER ============
-function SiteHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+        html {
+            scroll-behavior: smooth;
+        }
 
-  return (
-    <header className="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-blue-600">Baney GFC</span>
-            <span className="text-sm text-gray-500 hidden md:inline">| IT Solutions</span>
-          </div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: #1a202c;
+            line-height: 1.6;
+        }
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Services
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">
-              About
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-              Contact
-            </a>
-            <a
-              href="#quote"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Get a Quote
-            </a>
-          </nav>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-block;
+            background: #2563eb;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-4">
-              <a href="#services" className="text-gray-700 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
-                Services
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
-                About
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
-                Contact
-              </a>
-              <a
-                href="#quote"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Get a Quote
-              </a>
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
-  );
-}
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #fff;
+            color: #2563eb;
+        }
 
-// ============ HERO SECTION ============
-function Hero() {
-  return (
-    <section className="pt-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Welcome to <span className="text-white">Baney GFC</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-4 font-light">
-            Your trusted partner for comprehensive IT networking solutions
-          </p>
-          <p className="text-lg md:text-xl mb-8 text-blue-100">
-            From managed services to infrastructure, we handle all your technology needs
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#services"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-            >
-              Our Services
-            </a>
-            <a
-              href="#quote"
-              className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
-            >
-              Get a Quote
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #2563eb;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid #2563eb;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover {
+            background: #2563eb;
+            color: #fff;
+        }
 
-// ============ SERVICES SECTION ============
-function Services() {
-  const managedServices = [
-    "End-user support",
-    "Onsite services (break-fix, installations, cabling, etc.)",
-    "Network monitoring",
-    "Data backup",
-    "Security",
-    "Licensing",
-    "Planning",
-    "Reporting"
-  ];
+        /* ===== SITE HEADER ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 1000;
+            height: 64px;
+        }
 
-  const infrastructureServices = [
-    "Structured cabling (Fiber/Copper)",
-    "Cabling at heights (warehouse, outdoor)",
-    "Wi-Fi assessments, installation and planning",
-    "Server/cloud/hybrid solutions",
-    "Backup and Disaster Recovery",
-    "Email and Data Migrations (M365/Google/other)",
-    "Network and Firewall solutions",
-    "Telecom - Business Phone systems",
-    "Boardroom/Collaboration room solutions",
-    "Surveillance camera and monitoring solutions",
-    "Modernization and upgrades of existing infrastructure",
-    "Modern Windows/Chrome/Apple & Mobile Device Management"
-  ];
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
 
-  return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive IT solutions tailored to your business needs
-          </p>
-        </div>
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #6b7280;
+            font-size: 0.875rem;
+            font-weight: 400;
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .logo span { display: inline; }
+        }
 
-        {/* Managed Services */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-1 h-8 bg-blue-600 rounded-full"></div>
-            <h3 className="text-2xl font-bold text-gray-900">Managed Services</h3>
-          </div>
-          <p className="text-gray-600 mb-6 ml-4">
-            Discover the incredible value that comes with our fully managed services.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {managedServices.map((service, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-3">
-                  <Check size={18} className="text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">{service}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 ml-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
-            <p className="text-blue-800 font-medium">
-              In short - We become your internal IT department and strategic partner, handling all things technology!
-            </p>
-            <p className="text-blue-700 mt-2">
-              Already have an IT team but need additional help with projects, infrastructure, planning or licensing? Let us help free up the valuable time your IT team needs!
-            </p>
-          </div>
-        </div>
+        .nav-desktop {
+            display: none;
+            align-items: center;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .nav-desktop { display: flex; }
+        }
 
-        {/* Infrastructure Services */}
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-1 h-8 bg-blue-600 rounded-full"></div>
-            <h3 className="text-2xl font-bold text-gray-900">Infrastructure</h3>
-          </div>
-          <p className="text-gray-600 mb-6 ml-4">
-            We provide infrastructure services in a number of areas
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {infrastructureServices.map((service, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-3">
-                  <Check size={18} className="text-blue-600 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700">{service}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+        .nav-desktop a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-desktop a:hover {
+            color: #2563eb;
+        }
 
-// ============ PROJECTS/FILTER SECTION ============
-function Projects() {
-  const projects = [
-    {
-      title: "Network Infrastructure Upgrade",
-      category: "Infrastructure",
-      description: "Complete network overhaul for a mid-size manufacturing company"
-    },
-    {
-      title: "Cloud Migration",
-      category: "Managed Services",
-      description: "Seamless migration to Microsoft 365 for a legal firm"
-    },
-    {
-      title: "Structured Cabling",
-      category: "Infrastructure",
-      description: "Fiber optic cabling installation for a new office building"
-    },
-    {
-      title: "Security Implementation",
-      category: "Managed Services",
-      description: "Comprehensive security solution for a healthcare provider"
-    },
-    {
-      title: "Wi-Fi Assessment & Planning",
-      category: "Infrastructure",
-      description: "Enterprise Wi-Fi deployment for a large warehouse facility"
-    },
-    {
-      title: "Backup & Disaster Recovery",
-      category: "Managed Services",
-      description: "Business continuity solution for a financial services company"
-    }
-  ];
+        .nav-desktop .btn-primary {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+        }
 
-  const [filter, setFilter] = useState("All");
-  const categories = ["All", "Managed Services", "Infrastructure"];
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a202c;
+        }
+        @media (min-width: 768px) {
+            .menu-toggle { display: none; }
+        }
 
-  const filteredProjects = filter === "All" 
-    ? projects 
-    : projects.filter(p => p.category === filter);
+        .nav-mobile {
+            display: none;
+            padding: 1rem 0;
+            border-top: 1px solid #e5e7eb;
+        }
+        .nav-mobile.open {
+            display: block;
+        }
+        .nav-mobile a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #374151;
+            text-decoration: none;
+        }
+        .nav-mobile a:hover {
+            color: #2563eb;
+        }
+        .nav-mobile .btn-primary {
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
 
-  return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Projects</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            See how Baney GFC delivers results for our clients
-          </p>
-        </div>
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 64px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #fff;
+            text-align: center;
+            padding-bottom: 5rem;
+        }
+        .hero-content {
+            padding: 4rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span {
+            color: #fff;
+        }
+        .hero p.sub {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .hero p.desc {
+            font-size: 1.125rem;
+            color: #bfdbfe;
+            margin-bottom: 2rem;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (min-width: 640px) {
+            .hero h1 { font-size: 3rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-buttons { flex-direction: row; }
+        }
+        @media (min-width: 1024px) {
+            .hero h1 { font-size: 4rem; }
+        }
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                filter === category
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {category}
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        .section-title p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-title .line {
+            width: 5rem;
+            height: 4px;
+            background: #2563eb;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== SERVICES ===== */
+        #services {
+            background: #f9fafb;
+        }
+
+        .service-category {
+            margin-bottom: 4rem;
+        }
+        .service-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+        .category-header .bar {
+            width: 4px;
+            height: 2rem;
+            background: #2563eb;
+            border-radius: 2px;
+        }
+        .category-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+        }
+        .category-sub {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            margin-left: 1.25rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .service-grid.managed { grid-template-columns: repeat(4, 1fr); }
+            .service-grid.infrastructure { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .service-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .service-card i {
+            color: #2563eb;
+            font-size: 1rem;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+        .service-card span {
+            color: #374151;
+        }
+
+        .highlight-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            padding: 1rem 1.25rem;
+            margin-top: 1.5rem;
+            margin-left: 1.25rem;
+        }
+        .highlight-box p {
+            color: #1e40af;
+            font-weight: 500;
+        }
+        .highlight-box p:last-child {
+            font-weight: 400;
+            color: #1e3a8a;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== PROJECTS ===== */
+        #projects {
+            background: #fff;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            background: #f3f4f6;
+            color: #374151;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover {
+            background: #e5e7eb;
+        }
+        .filter-btn.active {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .project-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .project-card {
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border: 1px solid #f3f4f6;
+            transition: box-shadow 0.2s;
+        }
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .project-card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.75rem;
+        }
+        .project-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.25rem;
+        }
+        .project-card p {
+            color: #6b7280;
+        }
+        .project-card .link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+            margin-top: 0.75rem;
+        }
+        .project-card .link:hover {
+            color: #1d4ed8;
+        }
+        .project-card .link i {
+            font-size: 0.75rem;
+        }
+
+        /* ===== ABOUT ===== */
+        #about {
+            background: #f9fafb;
+        }
+
+        .about-box {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .about-box p {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.8;
+        }
+        .about-box p:last-of-type {
+            margin-top: 1rem;
+        }
+        .about-box .highlight {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        @media (min-width: 640px) {
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .stat-item {
+            background: #eff6ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        .stat-item .label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        #testimonials {
+            background: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .testimonial-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .testimonial-card {
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border: 1px solid #f3f4f6;
+            transition: box-shadow 0.2s;
+        }
+        .testimonial-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .testimonial-card .stars {
+            color: #f59e0b;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-card blockquote {
+            color: #374151;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            color: #111827;
+        }
+        .testimonial-card .role {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* ===== QUOTE FORM ===== */
+        #quote {
+            background: #f9fafb;
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .quote-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .contact-info {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #f3f4f6;
+        }
+        .contact-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .contact-item i {
+            color: #2563eb;
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+            width: 1.5rem;
+        }
+        .contact-item .label {
+            font-weight: 500;
+            color: #111827;
+        }
+        .contact-item .value {
+            color: #6b7280;
+        }
+        .contact-item .value a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+        .contact-item .value a:hover {
+            color: #2563eb;
+        }
+
+        .hours-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+        .hours-box p {
+            font-size: 0.875rem;
+            color: #1e3a8a;
+        }
+        .hours-box strong {
+            font-weight: 600;
+        }
+
+        .quote-form {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #f3f4f6;
+        }
+        .quote-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .quote-form label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+        .quote-form input,
+        .quote-form textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .quote-form input:focus,
+        .quote-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        .quote-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .quote-form .btn-primary {
+            width: 100%;
+            font-size: 1rem;
+            padding: 0.75rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: #111827;
+            color: #fff;
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 640px) {
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .footer-grid h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .footer-grid p,
+        .footer-grid a {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: block;
+            line-height: 2;
+        }
+        .footer-grid a:hover {
+            color: #fff;
+        }
+        .footer-grid .brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1f2937;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* ===== RESPONSIVE TWEAKS ===== */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p.sub { font-size: 1rem; }
+            .hero p.desc { font-size: 1rem; }
+            .section-title h2 { font-size: 1.75rem; }
+            .about-box p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SITE HEADER ===== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">Baney GFC <span>| IT Solutions</span></a>
+
+            <!-- Desktop Nav -->
+            <nav class="nav-desktop">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#quote" class="btn-primary">Get a Quote</a>
+            </nav>
+
+            <!-- Mobile Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
             </button>
-          ))}
         </div>
+        <!-- Mobile Nav -->
+        <div class="container">
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="#services" class="mobile-link">Services</a>
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+                <a href="#quote" class="btn-primary mobile-link">Get a Quote</a>
+            </nav>
+        </div>
+    </header>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="mb-3">
-                <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                  {project.category}
-                </span>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.title}</h3>
-              <p className="text-gray-600">{project.description}</p>
-              <div className="mt-4">
-                <a href="#quote" className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center gap-1">
-                  Learn more <ChevronRight size={16} />
-                </a>
-              </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Welcome to <span>Baney GFC</span></h1>
+            <p class="sub">Your trusted partner for comprehensive IT networking solutions</p>
+            <p class="desc">From managed services to infrastructure, we handle all your technology needs</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn-primary">Our Services</a>
+                <a href="#quote" class="btn-secondary">Get a Quote</a>
             </div>
-          ))}
         </div>
-      </div>
     </section>
-  );
-}
 
-// ============ ABOUT SECTION ============
-function About() {
-  return (
-    <section id="about" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Baney GFC</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-          </div>
-          
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              Navigating the modern technology landscape shouldn't distract you from your core business goals. 
-              As your strategic IT partner, <span className="font-semibold text-blue-600">Baney GFC</span> brings 
-              innovative, flexible tech solutions to businesses across the Greater Toronto Area.
-            </p>
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed mt-4">
-              True to our name, we pivot quickly to match your evolving needs. We take care of the complexities 
-              so your team can focus entirely on what they do best.
-            </p>
-            
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-blue-50 p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-blue-600">GTA</div>
-                <div className="text-sm text-gray-600">Serving the Greater Toronto Area</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-blue-600">100%</div>
-                <div className="text-sm text-gray-600">Client Satisfaction Focus</div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg text-center">
-                <div className="text-2xl font-bold text-blue-600">24/7</div>
-                <div className="text-sm text-gray-600">Support Available</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============ TESTIMONIALS SECTION ============
-function Testimonials() {
-  const testimonials = [
-    {
-      name: "John Smith",
-      role: "CEO, TechCorp",
-      content: "Baney GFC transformed our entire IT infrastructure. Their team is professional, responsive, and truly cares about our success."
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Operations Manager, HealthPlus",
-      content: "The managed services from Baney GFC have been a game-changer for our organization. We can focus on patient care while they handle all our technology needs."
-    },
-    {
-      name: "Michael Chen",
-      role: "IT Director, Finance Solutions",
-      content: "Their expertise in cloud migration and network security is outstanding. I highly recommend Baney GFC for any IT project."
-    }
-  ];
-
-  return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Real feedback from businesses we've helped
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6 border border-gray-100 hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-1 text-blue-500 mb-4">
-                {"★".repeat(5)}
-              </div>
-              <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
-              <div>
-                <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                <p className="text-sm text-gray-600">{testimonial.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ============ QUOTE/CONTACT FORM ============
-function QuoteForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you! We'll get back to you within 24 hours.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
-
-  return (
-    <section id="quote" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get a Quote</h2>
-            <p className="text-lg text-gray-600">
-              Ready to transform your IT infrastructure? Let's talk about how Baney GFC can help.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Contact Information */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Phone size={20} className="text-blue-600 mt-1" />
-                  <div>
-                    <p className="font-medium text-gray-900">Phone</p>
-                    <a href="tel:4167884975" className="text-gray-600 hover:text-blue-600">
-                      (416) 788-4975
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Mail size={20} className="text-blue-600 mt-1" />
-                  <div>
-                    <p className="font-medium text-gray-900">Email</p>
-                    <a href="mailto:baneygfc@gmail.com" className="text-gray-600 hover:text-blue-600">
-                      baneygfc@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin size={20} className="text-blue-600 mt-1" />
-                  <div>
-                    <p className="font-medium text-gray-900">Location</p>
-                    <p className="text-gray-600">Greater Toronto Area, Canada</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
-                  <p className="text-sm text-blue-800">
-                    <span className="font-semibold">Business Hours:</span> Monday - Friday, 9:00 AM - 6:00 PM EST
-                  </p>
-                </div>
-              </div>
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive IT solutions tailored to your business needs</p>
+                <div class="line"></div>
             </div>
 
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="John Doe"
-                  />
+            <!-- Managed Services -->
+            <div class="service-category">
+                <div class="category-header">
+                    <div class="bar"></div>
+                    <h3>Managed Services</h3>
+                </div>
+                <p class="category-sub">Discover the incredible value that comes with our fully managed services.</p>
+
+                <div class="service-grid managed">
+                    <div class="service-card"><i class="fas fa-check"></i><span>End-user support</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Onsite services (break-fix, installations, cabling, etc.)</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Network monitoring</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Data backup</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Security</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Licensing</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Planning</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Reporting</span></div>
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="john@example.com"
-                  />
+                <div class="highlight-box">
+                    <p>In short - We become your internal IT department and strategic partner, handling all things technology!</p>
+                    <p>Already have an IT team but need additional help with projects, infrastructure, planning or licensing? Let us help free up the valuable time your IT team needs!</p>
                 </div>
+            </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="(416) 788-4975"
-                  />
+            <!-- Infrastructure -->
+            <div class="service-category">
+                <div class="category-header">
+                    <div class="bar"></div>
+                    <h3>Infrastructure</h3>
                 </div>
+                <p class="category-sub">We provide infrastructure services in a number of areas</p>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                    placeholder="Tell us about your IT needs..."
-                  />
+                <div class="service-grid infrastructure">
+                    <div class="service-card"><i class="fas fa-check"></i><span>Structured cabling (Fiber/Copper)</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Cabling at heights (warehouse, outdoor)</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Wi-Fi assessments, installation and planning</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Server/cloud/hybrid solutions</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Backup and Disaster Recovery</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Email and Data Migrations (M365/Google/other)</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Network and Firewall solutions</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Telecom - Business Phone systems</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Boardroom/Collaboration room solutions</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Surveillance camera and monitoring solutions</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Modernization and upgrades of existing infrastructure</span></div>
+                    <div class="service-card"><i class="fas fa-check"></i><span>Modern Windows/Chrome/Apple &amp; Mobile Device Management</span></div>
                 </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
     </section>
-  );
-}
 
-// ============ SITE FOOTER ============
-function SiteFooter() {
-  return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">Baney GFC</h3>
-            <p className="text-gray-400 text-sm">
-              Your trusted partner for comprehensive IT networking solutions in the Greater Toronto Area.
-            </p>
-          </div>
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Projects</h2>
+                <p>See how Baney GFC delivers results for our clients</p>
+                <div class="line"></div>
+            </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-              <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#quote" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
+            <!-- Filter -->
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-filter="All">All</button>
+                <button class="filter-btn" data-filter="Managed Services">Managed Services</button>
+                <button class="filter-btn" data-filter="Infrastructure">Infrastructure</button>
+            </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li className="text-gray-400">Managed Services</li>
-              <li className="text-gray-400">Infrastructure</li>
-              <li className="text-gray-400">Network Solutions</li>
-              <li className="text-gray-400">Cloud Services</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="tel:4167884975" className="text-gray-400 hover:text-white transition-colors">
-                  (416) 788-4975
-                </a>
-              </li>
-              <li>
-                <a href="mailto:baneygfc@gmail.com" className="text-gray-400 hover:text-white transition-colors">
-                  baneygfc@gmail.com
-                </a>
-              </li>
-              <li className="text-gray-400">Greater Toronto Area</li>
-            </ul>
-          </div>
+            <!-- Project Grid -->
+            <div class="project-grid" id="projectGrid">
+                <!-- Cards injected by JS -->
+            </div>
         </div>
+    </section>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Baney GFC. All rights reserved.</p>
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Baney GFC</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="about-box">
+                <p>
+                    Navigating the modern technology landscape shouldn't distract you from your core business goals.
+                    As your strategic IT partner, <span class="highlight">Baney GFC</span> brings
+                    innovative, flexible tech solutions to businesses across the Greater Toronto Area.
+                </p>
+                <p>
+                    True to our name, we pivot quickly to match your evolving needs. We take care of the complexities
+                    so your team can focus entirely on what they do best.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="number">GTA</div>
+                        <div class="label">Serving the Greater Toronto Area</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">100%</div>
+                        <div class="label">Client Satisfaction Focus</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">24/7</div>
+                        <div class="label">Support Available</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Real feedback from businesses we've helped</p>
+                <div class="line"></div>
+            </div>
+
+            <div class="testimonial-grid" id="testimonialGrid">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUOTE / CONTACT ===== -->
+    <section id="quote">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get a Quote</h2>
+                <p>Ready to transform your IT infrastructure? Let's talk about how Baney GFC can help.</p>
+                <div class="line"></div>
+            </div>
+
+            <div class="quote-grid">
+                <!-- Contact Info -->
+                <div class="contact-info" id="contact">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <div class="label">Phone</div>
+                            <div class="value"><a href="tel:4167884975">(416) 788-4975</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="label">Email</div>
+                            <div class="value"><a href="mailto:baneygfc@gmail.com">baneygfc@gmail.com</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <div class="label">Location</div>
+                            <div class="value">Greater Toronto Area, Canada</div>
+                        </div>
+                    </div>
+
+                    <div class="hours-box">
+                        <p><strong>Business Hours:</strong> Monday – Friday, 9:00 AM – 6:00 PM EST</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="quote-form" id="quoteForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(416) 788-4975" />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your IT needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand">Baney GFC</div>
+                    <p>Your trusted partner for comprehensive IT networking solutions in the Greater Toronto Area.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#quote">Contact</a>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <a href="#services">Managed Services</a>
+                    <a href="#services">Infrastructure</a>
+                    <a href="#services">Network Solutions</a>
+                    <a href="#services">Cloud Services</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <a href="tel:4167884975">(416) 788-4975</a>
+                    <a href="mailto:baneygfc@gmail.com">baneygfc@gmail.com</a>
+                    <span style="color:#9ca3af;font-size:0.875rem;">Greater Toronto Area</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Baney GFC. All rights reserved.
+            </div>
+        </div>
     </footer>
-  );
-}
 
-// ============ MAIN PAGE COMPONENT ============
-export default function Page() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <SiteHeader />
-      <main className="flex-1">
-        <Hero />
-        <Services />
-        <Projects />
-        <About />
-        <Testimonials />
-        <QuoteForm />
-      </main>
-      <SiteFooter />
-    </div>
-  );
-}
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---- Mobile Menu ----
+            const toggle = document.getElementById('menuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+
+            toggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('open');
+                const icon = toggle.querySelector('i');
+                if (mobileNav.classList.contains('open')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-link').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('open');
+                    const icon = toggle.querySelector('i');
+                    icon.className = 'fas fa-bars';
+                });
+            });
+
+            // ---- Projects Data ----
+            const projectsData = [
+                { title: 'Network Infrastructure Upgrade', category: 'Infrastructure', desc: 'Complete network overhaul for a mid-size manufacturing company' },
+                { title: 'Cloud Migration', category: 'Managed Services', desc: 'Seamless migration to Microsoft 365 for a legal firm' },
+                { title: 'Structured Cabling', category: 'Infrastructure', desc: 'Fiber optic cabling installation for a new office building' },
+                { title: 'Security Implementation', category: 'Managed Services', desc: 'Comprehensive security solution for a healthcare provider' },
+                { title: 'Wi-Fi Assessment & Planning', category: 'Infrastructure', desc: 'Enterprise Wi-Fi deployment for a large warehouse facility' },
+                { title: 'Backup & Disaster Recovery', category: 'Managed Services', desc: 'Business continuity solution for a financial services company' }
+            ];
+
+            const projectGrid = document.getElementById('projectGrid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            function renderProjects(filter) {
+                const filtered = filter === 'All' ? projectsData : projectsData.filter(p => p.category === filter);
+                projectGrid.innerHTML = '';
+                filtered.forEach(function(p) {
+                    const card = document.createElement('div');
+                   
