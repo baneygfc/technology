@@ -396,10 +396,13 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
   animation: fadeUp 900ms var(--ease) both;
 }
 .g-item.is-ph { cursor: default; }
-.g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.g-item img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
 .g-item:hover img { transform: scale(1.05); }
 .g-item:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
 @media (max-width: 520px) { .g-item:first-child { grid-column: auto; grid-row: auto; aspect-ratio: 4 / 3; } }
+.gallery.small { grid-template-columns: repeat(var(--n, 3), 1fr); max-width: calc(var(--n, 3) * 380px); }
+.gallery.small .g-item, .gallery.small .g-item:first-child { grid-column: auto; grid-row: auto; aspect-ratio: 1 / 1; }
+@media (max-width: 520px) { .gallery.small { grid-template-columns: 1fr; } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
 /* Lightbox */
@@ -916,11 +919,12 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
   //    Photo 1 is also used as the thumbnail for that gallery.
   //    Missing photos show a tidy "Photo coming soon" tile.
   var GALLERIES = [
-    { id: 'before-after',     cat: 'managed', label: 'g_before_after', folder: 'images/projects/managed/before-after',             count: 6 },
-    { id: 'cable-clean-up',   cat: 'managed', label: 'g_cable',        folder: 'images/projects/managed/cable-clean-up',           count: 6 },
-    { id: 'network-racks',    cat: 'managed', label: 'g_racks',        folder: 'images/projects/managed/completed-network-racks',  count: 6 },
-    { id: 'panago',           cat: 'managed', label: 'g_panago',       folder: 'images/projects/managed/panago-network-refresh',   count: 6 },
-    { id: 'tv-installation',  cat: 'managed', label: 'g_tv',           folder: 'images/projects/managed/tv-installation',          count: 6 },
+    { id: 'before-after',     cat: 'managed', label: 'g_before_after', folder: 'images/projects/managed/before-after',             count: 2 },
+    { id: 'cable-clean-up',   cat: 'managed', label: 'g_cable',        folder: 'images/projects/managed/cable-clean-up',           count: 2 },
+    { id: 'network-racks',    cat: 'managed', label: 'g_racks',        folder: 'images/projects/managed/completed-network-racks',  count: 11 },
+    { id: 'panago',           cat: 'managed', label: 'g_panago',       folder: 'images/projects/managed/panago-network-refresh',   count: 2 },
+    { id: 'tv-installation',  cat: 'managed', label: 'g_tv',           folder: 'images/projects/managed/tv-installation',          count: 3 },
+    { id: 'tablet-debit',     cat: 'managed', label: 'g_tablet',       folder: 'images/projects/managed/tablet-debit-workstation-network', count: 7 },
     { id: 'construction-1',   cat: 'infra',   label: 'g_c1',           folder: 'images/projects/infrastructure/construction-project-1', count: 6 },
     { id: 'construction-2',   cat: 'infra',   label: 'g_c2',           folder: 'images/projects/infrastructure/construction-project-2', count: 6 },
     { id: 'construction-3',   cat: 'infra',   label: 'g_c3',           folder: 'images/projects/infrastructure/construction-project-3', count: 6 },
@@ -956,7 +960,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       proj_eyebrow: 'Our work', proj_title: 'Our Projects', proj_sub: 'See how Baney GFC delivers results for our clients. Select a project to view its gallery.',
       tab_all: 'All', tab_infra: 'Infrastructure', tab_managed: 'Managed Services', tab_other: 'Highlights of Other Projects',
       g_before_after: 'Before and After Network Transformation', g_cable: 'Cable Clean Up', g_racks: 'Completed Network Racks',
-      g_panago: 'Panago Network Refresh', g_tv: 'TV Installation', g_c1: 'Construction Project 1', g_c2: 'Construction Project 2',
+      g_panago: 'Panago Network Refresh', g_tv: 'TV Installation', g_tablet: 'Tablet, Debit, Workstation & Network Installation', g_c1: 'Construction Project 1', g_c2: 'Construction Project 2',
       g_c3: 'Construction Project 3', g_rack_sf: 'Start to Finish Network Rack', g_highlights: 'Project Highlights',
       photo_soon: 'Photo coming soon', photo_of: 'Photo {n} of {t}',
       about_eyebrow: 'Who we are', about_title: 'About Baney GFC',
@@ -1010,7 +1014,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       proj_eyebrow: 'Nos réalisations', proj_title: 'Nos projets', proj_sub: 'Découvrez les résultats que Baney GFC obtient pour ses clients. Choisissez un projet pour voir sa galerie.',
       tab_all: 'Tous', tab_infra: 'Infrastructure', tab_managed: 'Services gérés', tab_other: 'Autres projets en vedette',
       g_before_after: 'Transformation réseau : avant et après', g_cable: 'Nettoyage du câblage', g_racks: 'Baies réseau terminées',
-      g_panago: 'Modernisation réseau Panago', g_tv: 'Installation de téléviseurs', g_c1: 'Projet de construction 1', g_c2: 'Projet de construction 2',
+      g_panago: 'Modernisation réseau Panago', g_tv: 'Installation de téléviseurs', g_tablet: 'Installation de tablettes, terminaux de paiement, postes de travail et réseau', g_c1: 'Projet de construction 1', g_c2: 'Projet de construction 2',
       g_c3: 'Projet de construction 3', g_rack_sf: 'Baie réseau du début à la fin', g_highlights: 'Faits saillants des projets',
       photo_soon: 'Photo à venir', photo_of: 'Photo {n} sur {t}',
       about_eyebrow: 'Qui nous sommes', about_title: 'À propos de Baney GFC',
@@ -1064,7 +1068,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       proj_eyebrow: 'Nuestro trabajo', proj_title: 'Nuestros proyectos', proj_sub: 'Vea cómo Baney GFC logra resultados para sus clientes. Seleccione un proyecto para ver su galería.',
       tab_all: 'Todos', tab_infra: 'Infraestructura', tab_managed: 'Servicios gestionados', tab_other: 'Otros proyectos destacados',
       g_before_after: 'Transformación de red: antes y después', g_cable: 'Organización de cableado', g_racks: 'Racks de red terminados',
-      g_panago: 'Renovación de red Panago', g_tv: 'Instalación de televisores', g_c1: 'Proyecto de construcción 1', g_c2: 'Proyecto de construcción 2',
+      g_panago: 'Renovación de red Panago', g_tv: 'Instalación de televisores', g_tablet: 'Instalación de tabletas, terminales de débito, estaciones de trabajo y red', g_c1: 'Proyecto de construcción 1', g_c2: 'Proyecto de construcción 2',
       g_c3: 'Proyecto de construcción 3', g_rack_sf: 'Rack de red de principio a fin', g_highlights: 'Proyectos destacados',
       photo_soon: 'Foto próximamente', photo_of: 'Foto {n} de {t}',
       about_eyebrow: 'Quiénes somos', about_title: 'Acerca de Baney GFC',
@@ -1196,7 +1200,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
   // Load an image; swap in a placeholder if the file isn't there yet
   function smartImg(src, alt, onFail) {
     var img = document.createElement('img');
-    img.loading = 'lazy'; img.decoding = 'async'; img.alt = alt; img.src = src;
+    img.loading = 'lazy'; img.alt = alt; img.src = src;
     img.addEventListener('error', function () {
       var ph = placeholder();
       if (img.parentNode) img.parentNode.replaceChild(ph, img);
@@ -1251,6 +1255,8 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       $('#galleryTitle').textContent = t(g.label);
       $('#galleryCat').textContent = t(CAT_LABEL[g.cat]);
       galleryEl.innerHTML = '';
+      galleryEl.className = 'gallery' + (g.count <= 3 ? ' small' : '');
+      galleryEl.style.setProperty('--n', Math.max(2, g.count));
       currentPhotos = [];
       photoList(g).forEach(function (src, i) {
         var item = document.createElement('button');
