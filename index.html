@@ -463,6 +463,10 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
 .contact-info h3, .quote-form h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 26px; }
 .ci { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .ci:last-of-type { border-bottom: 0; }
+.ci-wa i { background: rgba(37,211,102,0.12) !important; border-color: rgba(37,211,102,0.35) !important; color: #25D366 !important; font-size: 1.15rem !important; }
+.ci-wa .v a { color: #25D366 !important; font-weight: 600; }
+.ci-wa .v a:hover { color: #5BE38F !important; }
+.ci-wa .wa-num { color: var(--muted); font-size: 0.85rem; }
 .ci i { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2); color: var(--cyan); font-size: 0.95rem; }
 .ci .k { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); font-weight: 600; }
 .ci .v, .ci .v a { color: var(--text); text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
@@ -785,6 +789,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       <aside class="glass contact-info reveal">
         <h3 data-i18n="ci_title">Contact Information</h3>
         <div class="ci"><i class="fa-solid fa-phone"></i><div><div class="k" data-i18n="ci_phone">Phone</div><div class="v"><a href="tel:+14167884975">(416) 788-4975</a></div></div></div>
+        <div class="ci ci-wa"><i class="fa-brands fa-whatsapp"></i><div><div class="k">WhatsApp</div><div class="v"><a href="https://wa.me/14167884975" target="_blank" rel="noopener" data-i18n="ci_wa">Message us on WhatsApp</a></div><div class="wa-num">(416) 788-4975</div></div></div>
         <div class="ci"><i class="fa-solid fa-envelope"></i><div><div class="k" data-i18n="ci_email">Email</div><div class="v"><a href="mailto:support@baneygfc.com">support@baneygfc.com</a></div></div></div>
         <div class="ci"><i class="fa-solid fa-location-dot"></i><div><div class="k" data-i18n="ci_loc">Location</div><div class="v" data-i18n="ci_loc_v">Greater Toronto Area, Canada</div></div></div>
         <div class="hours" data-i18n-html="ci_hours"><strong>Business hours:</strong> Monday – Friday, 9:00 AM – 6:00 PM EST</div>
@@ -964,7 +969,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       cred3_t: 'Leviton Certified', cred3_d: 'Certified installation adhering to factory-certified cabling and connectivity specifications.',
       contact_eyebrow: 'Get in touch', contact_title: 'Request a Quote',
       contact_sub: 'Ready to transform your IT infrastructure? Tell us about your project and we’ll get back to you promptly.',
-      ci_title: 'Contact Information', ci_phone: 'Phone', ci_email: 'Email', ci_loc: 'Location', ci_loc_v: 'Greater Toronto Area, Canada',
+      ci_title: 'Contact Information', ci_phone: 'Phone', ci_email: 'Email', ci_wa: 'Message us on WhatsApp', ci_loc: 'Location', ci_loc_v: 'Greater Toronto Area, Canada',
       ci_hours: '<strong>Business hours:</strong> Monday – Friday, 9:00 AM – 6:00 PM EST',
       form_title: 'Tell us about your project',
       f_name: 'Name', f_name_ph: 'Your full name', f_email: 'Email', f_email_ph: 'you@company.com', f_phone: 'Phone Number',
@@ -1018,7 +1023,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       cred3_t: 'Certifiés Leviton', cred3_d: 'Installations certifiées conformes aux spécifications de câblage et de connectivité du fabricant.',
       contact_eyebrow: 'Nous joindre', contact_title: 'Demander une soumission',
       contact_sub: 'Prêt à transformer votre infrastructure TI? Parlez-nous de votre projet et nous vous répondrons rapidement.',
-      ci_title: 'Coordonnées', ci_phone: 'Téléphone', ci_email: 'Courriel', ci_loc: 'Emplacement', ci_loc_v: 'Région du Grand Toronto, Canada',
+      ci_title: 'Coordonnées', ci_phone: 'Téléphone', ci_email: 'Courriel', ci_wa: 'Écrivez-nous sur WhatsApp', ci_loc: 'Emplacement', ci_loc_v: 'Région du Grand Toronto, Canada',
       ci_hours: '<strong>Heures d’ouverture :</strong> lundi au vendredi, 9 h à 18 h (HNE)',
       form_title: 'Parlez-nous de votre projet',
       f_name: 'Nom', f_name_ph: 'Votre nom complet', f_email: 'Courriel', f_email_ph: 'vous@entreprise.com', f_phone: 'Numéro de téléphone',
@@ -1072,7 +1077,7 @@ section.block.alt { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2
       cred3_t: 'Certificados Leviton', cred3_d: 'Instalaciones certificadas que cumplen las especificaciones de cableado y conectividad del fabricante.',
       contact_eyebrow: 'Contáctenos', contact_title: 'Solicitar cotización',
       contact_sub: '¿Listo para transformar su infraestructura de TI? Cuéntenos sobre su proyecto y le responderemos a la brevedad.',
-      ci_title: 'Información de contacto', ci_phone: 'Teléfono', ci_email: 'Correo electrónico', ci_loc: 'Ubicación', ci_loc_v: 'Área del Gran Toronto, Canadá',
+      ci_title: 'Información de contacto', ci_phone: 'Teléfono', ci_email: 'Correo electrónico', ci_wa: 'Escríbanos por WhatsApp', ci_loc: 'Ubicación', ci_loc_v: 'Área del Gran Toronto, Canadá',
       ci_hours: '<strong>Horario:</strong> lunes a viernes, 9:00 a. m. – 6:00 p. m. (EST)',
       form_title: 'Cuéntenos sobre su proyecto',
       f_name: 'Nombre', f_name_ph: 'Su nombre completo', f_email: 'Correo electrónico', f_email_ph: 'usted@empresa.com', f_phone: 'Número de teléfono',
